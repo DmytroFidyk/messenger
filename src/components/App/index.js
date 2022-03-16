@@ -1,6 +1,14 @@
+import './styles.css';
+
+import Header from '../Header';
+
 const App = () => {
     return (
-        <h1>Вітання з мирної, вільної України!</h1>
+        <>
+            <Header/>
+            <br/><br/>
+            <h1>Вітання з мирної, вільної України!</h1>
+        </>
     );
 };
 
