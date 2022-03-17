@@ -8,4 +8,5 @@
 .chat-container {
     width: 100%;
     height: calc(100% - 120px);
+    background-color: #586E47;
 }
