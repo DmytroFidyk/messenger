@@ -3,18 +3,43 @@
     width: 100%;
 }
 
-.message {
+.message, .my-message {
+    min-width: 140px;
+    width: fit-content;
+    max-width: 460px;
+    height: fit-content;
+    background-color: white;
+    word-wrap: break-word;
+    border-radius: 10px;
+    border: .5px solid rgb(202, 202, 202);
+    padding: 10px;
+    margin: 10px;
+}
 
+.my-message-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.my-message {
+    background-color: rgb(255, 254, 173);
 }
 
 .nickname {
-
+    width: 100%;
+    display: flex;
+    font-weight: bold;
+    font-size: 18px;
 }
 
 .message-text {
-
+    font-size: 20px;
 }
 
 .time {
-
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    font-weight: bold;
+    font-size: 16px;
 }
