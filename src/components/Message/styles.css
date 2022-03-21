@@ -1,6 +1,7 @@
 .message-container {
     display: flex;
     width: 100%;
+    padding: 5px 0px;
 }
 
 .message, .my-message {
@@ -13,12 +14,12 @@
     border-radius: 10px;
     border: .5px solid rgb(202, 202, 202);
     padding: 10px;
-    margin: 10px;
 }
 
 .my-message-container {
     display: flex;
     justify-content: flex-end;
+    padding: 5px 0px;
 }
 
 .my-message {
@@ -34,12 +35,13 @@
 
 .message-text {
     font-size: 20px;
+    margin-top: 4px;
 }
 
 .time {
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    font-weight: bold;
     font-size: 16px;
+    margin-top: 4px;
 }

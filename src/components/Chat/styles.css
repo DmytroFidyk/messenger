@@ -1,0 +1,8 @@
+.chat {
+    width: 100%;
+    height: calc(100% - 120px);
+    background-color: #586E47;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    padding: 30px 20px;
+}

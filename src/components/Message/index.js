@@ -1,11 +1,13 @@
 import './styles.css';
 
 const Message = (props) => {
-    const { nickname, messageText, time } = props.messageData;
+    console.log(props.socketId);
+    const { userId, nickname, messageText, time } = props.messageData;
+    const socketId = props.socketId;
 
     let my = '';
     
-    if (props.messageData.isMyMessage) {
+    if (socketId === userId) {
         my = 'my-';
     }
 
