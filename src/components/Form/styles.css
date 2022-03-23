@@ -21,4 +21,34 @@
     font-size: 18px;
     border: none;
     letter-spacing: 1px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.send-icon {
+    display: none;
+}
+
+@media (max-width: 600px) {
+
+    .message-input {
+        max-width: 80%;
+    }
+
+    .send-button {
+        width: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .text-button {
+        display: none;
+    }
+
+    .send-icon {
+        display: block;
+        width: 36px;
+        height: 32px;
+    }
 }

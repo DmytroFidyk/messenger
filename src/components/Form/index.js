@@ -13,6 +13,12 @@ const Form = (props) => {
         setMessage(event.target.value);
     }
 
+    function handleSubmit(event) {
+        event.preventDefault();
+
+        sendMessage(event);
+    }
+
     function getTime() {
         const currentDate = new Date();
 
@@ -31,20 +37,45 @@ const Form = (props) => {
     function sendMessage(event) {
         const time = getTime();
 
-        if (event.key === 'Enter') {
-            event.preventDefault();           
+        if (event._reactName !== 'onSubmit') {
+            
+            if (event.key === 'Enter') {
 
+                event.preventDefault();           
+               
+                if (message !== '') {
+                    socket.emit('new message', { id: 0, userId: socket.id, nickname: nickname, messageText: message, time: time });
+                    document.getElementById('message-input').value = '';
+                }
+            }
+        }
+        else {
             if (message !== '') {
                 socket.emit('new message', { id: 0, userId: socket.id, nickname: nickname, messageText: message, time: time });
                 document.getElementById('message-input').value = '';
             }
         }
+       
     }
 
     return (
-        <form className="form">
-            <textarea id="message-input" className="message-input" onChange={handleChange} onKeyDown={sendMessage}></textarea>
-            <button className="send-button" type="submit" onSubmit={sendMessage}>Відправити</button>
+        <form className="form" onSubmit={handleSubmit}>
+            <textarea 
+                id="message-input" 
+                className="message-input" 
+                onChange={handleChange} 
+                onKeyDown={sendMessage}
+                placeholder="Напишіть повідомлення"
+            >
+            </textarea>
+            <button className="send-button">
+                <img 
+                    className="send-icon" 
+                    src="images/icons/sent-mail.png" 
+                    alt="Send icon"
+                />
+                <span className="text-button">Відправити</span>
+            </button>
         </form>
     );
 }

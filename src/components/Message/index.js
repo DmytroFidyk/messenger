@@ -1,7 +1,6 @@
 import './styles.css';
 
 const Message = (props) => {
-    console.log(props.socketId);
     const { userId, nickname, messageText, time } = props.messageData;
     const socketId = props.socketId;
 
