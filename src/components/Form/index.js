@@ -3,7 +3,6 @@ import React from 'react';
 import './styles.css';
 
 const Form = (props) => {
-
     const socket = props.socket;
     const nickname = props.currentUser;
 
@@ -55,7 +54,6 @@ const Form = (props) => {
                 document.getElementById('message-input').value = '';
             }
         }
-       
     }
 
     return (

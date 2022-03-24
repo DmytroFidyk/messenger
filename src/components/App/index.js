@@ -5,6 +5,7 @@ import './styles.css';
 
 import Header from '../Header';
 import Chat from '../Chat';
+import ParticipantsPanel from '../ParticipantsPanel';
 import Form from '../Form';
 
 const socket = io('https://messenger-private-server.herokuapp.com/');
@@ -23,7 +24,10 @@ const App = () => {
     return (
         <div className="main-container">
             <Header/>
-            <Chat socket={socket}/>
+            <div className="chat-container">
+                <Chat socket={socket}/>
+                <ParticipantsPanel/>
+            </div>
             <Form socket={socket} currentUser={nickName}/>
         </div>
     );
