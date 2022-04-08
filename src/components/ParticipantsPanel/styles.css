@@ -1,9 +1,9 @@
 #participants-panel {
-    display: none;
     background-color: white;
-    width: 400px;
+    width: 0px;
     height: 100%;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .title-container {
@@ -14,4 +14,12 @@
     padding: 20px;
     font-size: 18px;
     font-family: sans-serif;
+}
+
+.participants-list {
+    padding: 0px 10px;
+}
+
+.participant {
+    
 }

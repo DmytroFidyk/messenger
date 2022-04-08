@@ -7,14 +7,26 @@ const Form = (props) => {
     const nickname = props.currentUser;
 
     const [ message, setMessage ] = React.useState('');
+    const [ counter, setCounter ] = React.useState(0);
 
     function handleChange(event) {
+        const text = nickname + " пише...";
         setMessage(event.target.value);
+        if (counter < 1) {
+            if (event.target.value !== '') {
+                socket.emit('user write', {userId: socket.id, text: text});
+                setCounter(counter + 1);
+            }
+        }
+
+        if (event.target.value === '') {
+            socket.emit('stop write', 'Стоп');
+            setCounter(0);
+        }
     }
 
     function handleSubmit(event) {
         event.preventDefault();
-
         sendMessage(event);
     }
 
@@ -36,14 +48,15 @@ const Form = (props) => {
     function sendMessage(event) {
         const time = getTime();
 
-        if (event._reactName !== 'onSubmit') {
-            
+        if (event._reactName !== 'onSubmit') {            
             if (event.key === 'Enter') {
-
                 event.preventDefault();           
-               
+                
                 if (message !== '') {
                     socket.emit('new message', { id: 0, userId: socket.id, nickname: nickname, messageText: message, time: time });
+                    socket.emit('stop write', 'Стоп');
+                    setCounter(0);
+                    setMessage('');
                     document.getElementById('message-input').value = '';
                 }
             }
@@ -51,6 +64,9 @@ const Form = (props) => {
         else {
             if (message !== '') {
                 socket.emit('new message', { id: 0, userId: socket.id, nickname: nickname, messageText: message, time: time });
+                socket.emit('stop write', 'Стоп');
+                setCounter(0);
+                setMessage('');
                 document.getElementById('message-input').value = '';
             }
         }

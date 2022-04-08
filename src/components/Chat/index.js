@@ -10,22 +10,38 @@ function scrollDown() {
 }
 
 const Chat = (props) => {
+    const [ unreadMesaggesCount, setUnreadMessaggesCount ] = React.useState(0);
+    
+    document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) {
+            document.title = 'Месенджер';
+            unreadMessagesCount = 0;
+        }
+    });
+
     const socket = props.socket;
+    let unreadMessagesCount = props.unreadMessagesCount;
+
     const [ messages, setMessages ] = React.useState([]);
     
     React.useEffect(() => {
         socket.on('incoming', message => {
+            if(message.userId !== socket.id) {
+                unreadMessagesCount += 1;
+                if (document.hidden) {
+                    document.title = `Повідомлення (${unreadMessagesCount})`;
+                }
+            }
+
             setMessages(messages => {
                 return [
                     ...messages,
                     message
                 ];
             });
-            
-            scrollDown();
-        });
 
-       
+            scrollDown();
+        });   
     }, []);
 
     const allMessages = messages.map(message => {

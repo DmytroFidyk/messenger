@@ -11,22 +11,24 @@ import Form from '../Form';
 const socket = io('https://messenger-private-server.herokuapp.com/');
 
 const App = () => {
-    const [ nickName, setNickName ] = React.useState('Невідомий' || localStorage.getItem('nickName'));
+    let unreadMessagesCount = 0;
+    const [ nickName, setNickName ] = React.useState('');
 
     React.useEffect(() => {
-        setNickName(() => {
-            return prompt();
-        });
+        let user = prompt();
+        setNickName(user);
 
-        localStorage.setItem('nickName', nickName);
+        socket.on('connect', () => {
+            socket.emit('new participant', {userId: socket.id, nickName: user});
+        });
     }, []);
 
     return (
         <div className="main-container">
-            <Header/>
+            <Header socket={socket} nickName={nickName}/>
             <div className="chat-container">
-                <Chat socket={socket}/>
-                <ParticipantsPanel/>
+                <Chat socket={socket} nickName={nickName} unreadMessagesCount={unreadMessagesCount}/>
+                <ParticipantsPanel socket={socket}/>
             </div>
             <Form socket={socket} currentUser={nickName}/>
         </div>
