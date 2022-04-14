@@ -79,7 +79,7 @@ const Form = (props) => {
                 className="message-input" 
                 onChange={handleChange} 
                 onKeyDown={sendMessage}
-                placeholder="Напишіть повідомлення"
+                placeholder="Напишіть повідомлення..."
             >
             </textarea>
             <button className="send-button">

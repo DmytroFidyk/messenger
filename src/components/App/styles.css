@@ -11,3 +11,9 @@
     display: flex;
     max-height: calc(100% - 150px);
 }
+
+@media (max-width: 600px) {
+    .chat-container {
+        max-height: calc(100% - 90px);
+    }
+}

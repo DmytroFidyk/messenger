@@ -30,9 +30,14 @@
 }
 
 @media (max-width: 600px) {
+    .form {
+        height: 20px;
+    }
 
     .message-input {
         max-width: 80%;
+        height: 100%;
+        font-size: 18px;
     }
 
     .send-button {
@@ -48,7 +53,7 @@
 
     .send-icon {
         display: block;
-        width: 36px;
-        height: 32px;
+        width: 24px;
+        height: 24px;
     }
 }

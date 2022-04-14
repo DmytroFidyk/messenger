@@ -23,3 +23,9 @@
 .participant {
     
 }
+
+@media (max-width: 600px) {
+    .title-container {
+        font-size: 14px;
+    }
+}
