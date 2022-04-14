@@ -12,11 +12,22 @@ const socket = io('https://messenger-private-server.herokuapp.com/');
 
 const App = () => {
     let unreadMessagesCount = 0;
-    const [ nickName, setNickName ] = React.useState('');
+    const [ nickName, setNickName ] = React.useState('Невідомий');
 
     React.useEffect(() => {
-        let user = prompt();
-        setNickName(user);
+        let user = prompt("Введіть ваше ім'я aбо псевдонім");
+
+        if(user !== '') {
+            setNickName(user);
+        }
+        else {
+            user = 'Невідомий';
+        }
+
+        if(user === null) {
+            setNickName('Невідомий');
+            user = 'Невідомий';
+        }
 
         socket.on('connect', () => {
             socket.emit('new participant', {userId: socket.id, nickName: user});

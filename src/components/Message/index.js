@@ -1,4 +1,5 @@
 import './styles.css';
+import React from 'react';
 
 const Message = (props) => {
     const { userId, nickname, messageText, time } = props.messageData;
@@ -14,11 +15,10 @@ const Message = (props) => {
         <div className={`${my}message-container`}>
             <div className={`${my}message`}>
                 <div className="nickname">{nickname}</div>
-                <div className="message-text">{messageText}</div>
+                <div id="message-text" className="message-text">{messageText}</div>
                 <div className="time">{time}</div>
             </div>
         </div>
     );
 };
-
 export default Message;
